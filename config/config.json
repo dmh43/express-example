@@ -1,7 +1,10 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "./db.development.sqlite"
+    "username": "dany",
+    "password": null,
+    "database": "template1",
+    "host": "127.0.0.1",
+    "dialect": "postgresql"
   },
   "test": {
     "dialect": "sqlite",

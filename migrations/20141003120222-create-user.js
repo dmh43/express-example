@@ -3,11 +3,11 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface
-      .createTable('Users', {
+      .createTable('users', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING,
+          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
-          autoIncrement: true,
           allowNull: false
         },
         username: Sequelize.STRING,
@@ -15,12 +15,15 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: false
         },
-        updatedAt: Sequelize.DATE
+        updatedAt: {
+          type: Sequelize.DATE,
+          allowNull: false
+        }
       });
   },
 
   down: function (queryInterface, Sequelize) {
     return queryInterface
-      .dropTable('Users');
+      .dropTable('users');
   }
 };

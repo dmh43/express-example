@@ -3,11 +3,11 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface
-      .createTable('Tasks', {
+      .createTable('tasks', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING,
+          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
-          autoIncrement: true,
           allowNull: false
         },
         title: Sequelize.STRING,
@@ -16,12 +16,12 @@ module.exports = {
           allowNull: false
         },
         updatedAt: Sequelize.DATE,
-        UserId: {
-          type: Sequelize.INTEGER,
+        userId: {
+          type: Sequelize.STRING,
           onDelete: "CASCADE",
           allowNull: false,
           references: {
-            model: 'Users',
+            model: 'users',
             key: 'id'
           }
         }
@@ -30,6 +30,6 @@ module.exports = {
 
   down: function (queryInterface, Sequelize) {
     return queryInterface
-      .dropTable('Tasks');
+      .dropTable('tasks');
   }
 };

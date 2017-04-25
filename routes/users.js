@@ -3,7 +3,7 @@ var express = require('express');
 var router  = express.Router();
 
 router.post('/create', function(req, res) {
-  models.User.create({
+  models.user.create({
     username: req.body.username
   }).then(function() {
     res.redirect('/');
@@ -11,7 +11,7 @@ router.post('/create', function(req, res) {
 });
 
 router.get('/:user_id/destroy', function(req, res) {
-  models.User.destroy({
+  models.user.destroy({
     where: {
       id: req.params.user_id
     }
@@ -21,16 +21,16 @@ router.get('/:user_id/destroy', function(req, res) {
 });
 
 router.post('/:user_id/tasks/create', function (req, res) {
-  models.Task.create({
+  models.task.create({
     title: req.body.title,
-    UserId: req.params.user_id
+    userId: req.params.user_id
   }).then(function() {
     res.redirect('/');
   });
 });
 
 router.get('/:user_id/tasks/:task_id/destroy', function (req, res) {
-  models.Task.destroy({
+  models.task.destroy({
     where: {
       id: req.params.task_id
     }
